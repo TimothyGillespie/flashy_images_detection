@@ -8,8 +8,7 @@ import sys
 if __name__ == "__main__":
 	video = sys.argv[1]
 	video_handler = cv.VideoCapture(video)
-	#video_handler.set(cv.CAP_PROP_POS_MSEC, 130000)
-
+    
 	data = []
 	i = 0
 
@@ -22,7 +21,6 @@ if __name__ == "__main__":
 		(height, width, _) = frame.shape
 		frame = cv.resize(frame, (width//16, height//16))
 
-		#first_square = frame[0:80, 0:45]
 		first_square = frame
 
 		brightness_values = []
