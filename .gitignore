@@ -1,0 +1,8 @@
+# where data numpy arrays will be saved
+data
+
+# local videos for informal tests
+test_videos
+
+# PyCharm specific directory
+.idea
