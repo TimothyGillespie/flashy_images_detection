@@ -3,12 +3,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 import sys
+import pafy
 
 
 if __name__ == "__main__":
-	video = sys.argv[1]
-	video_handler = cv.VideoCapture(video)
-    
+	video_link = sys.argv[1]
+	vPafy = pafy.new(video_link)
+	video = vPafy.getbest(preftype = "webm")
+	video_handler = cv.VideoCapture(video.url)
 	data = []
 	i = 0
 
