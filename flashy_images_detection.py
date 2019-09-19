@@ -25,28 +25,16 @@ hz_treshold = 3
 
 def get_video_brightness(video_reference, save_data=True):
     """
-	:param video_reference: A local path or a youtube link.
+	:param video_reference: A path to the video
 	:param save_data: If true it will save the data as .npy file in the ./data folder (default: True)
 	:return: Numpy Array: [fps, [brightness_data]]
 	"""
 
-    # Deciding it it's a youtube link or a path
-    if re.match("youtube.com", video_reference) is not None:
-        try:
-            url = video_reference
-            vPafy = pafy.new(url)
-            video = vPafy.getbest(preftype="webm")
-            video_handler = cv.VideoCapture(video.url)
-        except Exception as e:
-            # A typical one might be an 403 not allowed. This one is video dependent
-            print("An Error occured: ", e)
-            exit()
-    else:
-        try:
-            video_handler = cv.VideoCapture(video_reference)
-        except Exception as e:
-            print("An error occured: ", e)
-            exit()
+    try:
+        video_handler = cv.VideoCapture(video_reference)
+    except Exception as e:
+        print("An error occured: ", e)
+        exit()
 
     # The brightness averages will be stored here. data[n] := average brightness of frame n
     data = []
